@@ -1,6 +1,5 @@
 {
-    "name": "rubic/magento2-module-clean-checkout",
-    "description": "A drop-in replacement for the Magento 2 checkout.",
+    "name": "rubic/magento2-module-clean-checkout-core",
     "type": "magento2-module",
     "license": "MIT",
     "autoload": {
@@ -10,32 +9,5 @@
         "psr-4": {
             "Rubic\\CleanCheckout\\": "src/"
         }
-    },
-    "config": {
-        "platform": {
-            "php": "7.0.26"
-        }
-    },
-    "require": {
-        "geoip2/geoip2": "^2.0",
-        "hybridauth/hybridauth" : "^3.0",
-        "magento/module-checkout": ">=100.1.0",
-        "magento/module-config": ">=100.1.0",
-        "magento/module-customer": ">=100.1.0",
-        "magento/module-directory": ">=100.1.0",
-        "magento/module-eav": ">=100.1.0",
-        "magento/module-newsletter": ">=100.1.0",
-        "magento/module-store": ">=100.1.0",
-        "magento/module-tax": ">=100.1.0",
-        "magento/module-theme": ">=100.1.0"
-    },
-    "require-dev": {
-        "phpstan/phpstan": "^0.9.1",
-	"magento/marketplace-eqp": "^1.0.5"
-    },
-    "repositories": [
-        { "type": "composer", "url": "https://repo.magento.com/" }
-    ],
-    "minimum-stability": "beta",
-    "prefer-stable": true
+    }
 }

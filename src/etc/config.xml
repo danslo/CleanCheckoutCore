@@ -10,18 +10,17 @@
                 <force_totals_full_mode>1</force_totals_full_mode>
                 <default_shipping_method>flatrate_flatrate</default_shipping_method>
                 <move_cart_items>1</move_cart_items>
-                <always_show_cart_items>0</always_show_cart_items>
-                <force_luma_checkout>0</force_luma_checkout>
+                <always_show_cart_items>1</always_show_cart_items>
                 <redirect_to_checkout>0</redirect_to_checkout>
                 <step_transition_speed>500</step_transition_speed>
             </general>
             <cleanup>
                 <disable_company>1</disable_company>
                 <disable_telephone>0</disable_telephone>
-                <disable_header>1</disable_header>
-                <disable_footer>1</disable_footer>
-                <disable_copyright>1</disable_copyright>
-                <display_logo>1</display_logo>
+                <disable_header>0</disable_header>
+                <disable_footer>0</disable_footer>
+                <disable_copyright>0</disable_copyright>
+                <display_logo>0</display_logo>
                 <disable_login_popup>1</disable_login_popup>
                 <disable_discount>0</disable_discount>
             </cleanup>
@@ -30,30 +29,6 @@
                 <hide_shipping_title>1</hide_shipping_title>
                 <shipping_validate_delay>500</shipping_validate_delay>
             </shipping>
-            <colors>
-                <body_background>transparent</body_background>
-                <checkout_background>#f5f5f5</checkout_background>
-                <checkout_border>#cccccc</checkout_border>
-            </colors>
-            <geo_ip>
-                <enabled>1</enabled>
-            </geo_ip>
-            <newsletter>
-                <enabled>1</enabled>
-                <checked>1</checked>
-                <label>Subscribe to our newsletter to receive exclusive offers and the latest news on our products and services.</label>
-            </newsletter>
-            <back_to_store>
-                <enabled>0</enabled>
-                <label>Back to Store</label>
-            </back_to_store>
-            <social_login>
-                <enabled>0</enabled>
-            </social_login>
-            <auto_complete>
-                <enabled>0</enabled>
-                <split_street_fields>1</split_street_fields>
-            </auto_complete>
             <field_order>
                 <firstname>20</firstname>
                 <middlename>30</middlename>

@@ -10,9 +10,3 @@ ComponentRegistrar::register(
     'Rubic_CleanCheckout',
     __DIR__ . '/src'
 );
-
-ComponentRegistrar::register(
-    ComponentRegistrar::LIBRARY,
-    'GeoIp2',
-    __DIR__ . '/../../../vendor/geoip2/geoip2/src'
-);

@@ -9,7 +9,6 @@ use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\UrlInterface;
 use Magento\Store\Model\ScopeInterface;
-use Rubic\CleanCheckout\Service\SocialLoginService;
 
 class CheckoutConfigProvider implements ConfigProviderInterface
 {
@@ -18,14 +17,8 @@ class CheckoutConfigProvider implements ConfigProviderInterface
     const CONFIG_PATH_SHIPPING_VALIDATE_DELAY = 'clean_checkout/shipping/shipping_validate_delay';
     const CONFIG_PATH_DEFAULT_PAYMENT_METHOD  = 'clean_checkout/general/default_payment_method';
     const CONFIG_PATH_FORCE_TOTALS_FULL_MODE  = 'clean_checkout/general/force_totals_full_mode';
-    const CONFIG_PATH_NEWSLETTER_ENABLED      = 'clean_checkout/newsletter/enabled';
-    const CONFIG_PATH_NEWSLETTER_CHECKED      = 'clean_checkout/newsletter/checked';
-    const CONFIG_PATH_NEWSLETTER_LABEL        = 'clean_checkout/newsletter/label';
     const CONFIG_PATH_ALWAYS_SHOW_CART_ITEMS  = 'clean_checkout/general/always_show_cart_items';
     const CONFIG_PATH_STEP_TRANSITION_SPEED   = 'clean_checkout/general/step_transition_speed';
-    const CONFIG_PATH_AUTO_COMPLETE_ENABLED   = 'clean_checkout/auto_complete/enabled';
-    const CONFIG_PATH_AUTO_COMPLETE_API_KEY   = 'clean_checkout/auto_complete/api_key';
-    const CONFIG_PATH_AUTO_COMPLETE_SPLIT     = 'clean_checkout/auto_complete/split_street_fields';
 
     /**
      * @var ScopeConfigInterface
@@ -45,20 +38,6 @@ class CheckoutConfigProvider implements ConfigProviderInterface
     {
         $this->scopeConfig = $scopeConfig;
         $this->url = $url;
-    }
-
-    /**
-     * Checks if social login provider is enabled in config.
-     *
-     * @param string $provider
-     * @return bool
-     */
-    private function isProviderEnabled($provider)
-    {
-        return (bool)$this->scopeConfig->getValue(
-            sprintf(SocialLoginService::CONFIG_PATH_SOCIAL_LOGIN_PROVIDER_ENABLED, $provider),
-            ScopeInterface::SCOPE_STORE
-        );
     }
 
     /**
@@ -87,19 +66,6 @@ class CheckoutConfigProvider implements ConfigProviderInterface
                 self::CONFIG_PATH_DEFAULT_PAYMENT_METHOD,
                 ScopeInterface::SCOPE_STORE
             ),
-            'newsletterEnabled' => (bool)$this->scopeConfig->getValue(
-                self::CONFIG_PATH_NEWSLETTER_ENABLED,
-                ScopeInterface::SCOPE_STORE
-            ),
-            'newsletterUrl' => $this->url->getUrl('clean_checkout/newsletter/subscribe'),
-            'newsletterChecked' => (bool)$this->scopeConfig->getValue(
-                self::CONFIG_PATH_NEWSLETTER_CHECKED,
-                ScopeInterface::SCOPE_STORE
-            ),
-            'newsletterLabel' => $this->scopeConfig->getValue(
-                self::CONFIG_PATH_NEWSLETTER_LABEL,
-                ScopeInterface::SCOPE_STORE
-            ),
             'alwaysShowCartItems' => (bool)$this->scopeConfig->getValue(
                 self::CONFIG_PATH_ALWAYS_SHOW_CART_ITEMS,
                 ScopeInterface::SCOPE_STORE
@@ -107,31 +73,7 @@ class CheckoutConfigProvider implements ConfigProviderInterface
             'stepTransitionSpeed' => (int)$this->scopeConfig->getValue(
                 self::CONFIG_PATH_STEP_TRANSITION_SPEED,
                 ScopeInterface::SCOPE_STORE
-            ),
-            'socialLogin' => [
-                'enabled' => (bool)$this->scopeConfig->getValue(
-                    SocialLoginService::CONFIG_PATH_SOCIAL_LOGIN_ENABLED,
-                    ScopeInterface::SCOPE_STORE
-                ),
-                'url' => $this->url->getUrl('clean_checkout/social/authenticate'),
-                'twitter' => $this->isProviderEnabled('twitter'),
-                'facebook' => $this->isProviderEnabled('facebook'),
-                'google' => $this->isProviderEnabled('google')
-            ],
-            'autoComplete' => [
-                'enabled' => (bool)$this->scopeConfig->getValue(
-                    self::CONFIG_PATH_AUTO_COMPLETE_ENABLED,
-                    ScopeInterface::SCOPE_STORE
-                ),
-                'apiKey' => $this->scopeConfig->getValue(
-                    self::CONFIG_PATH_AUTO_COMPLETE_API_KEY,
-                    ScopeInterface::SCOPE_STORE
-                ),
-                'splitStreetFields' => $this->scopeConfig->getValue(
-                    self::CONFIG_PATH_AUTO_COMPLETE_SPLIT,
-                    ScopeInterface::SCOPE_STORE
-                ),
-            ]
+            )
         ];
     }
 }

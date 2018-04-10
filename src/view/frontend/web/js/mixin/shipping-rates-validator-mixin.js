@@ -8,7 +8,7 @@ define([
     'use strict';
 
     /**
-     * Allow configuration to set shipping validator delay.
+     * Set shipping validator delay from configuration.
      */
     return function (target) {
         target.validateDelay = window.checkoutConfig.shippingValidateDelay;
