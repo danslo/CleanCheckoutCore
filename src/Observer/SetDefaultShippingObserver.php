@@ -72,12 +72,12 @@ class SetDefaultShippingObserver implements ObserverInterface
 
         /** @var Quote $quote */
         $quote = $observer->getData('quote');
+        $shippingAddress = $quote->getShippingAddress();
 
-        if ($quote->isVirtual()) {
+        if ($shippingAddress->getShippingMethod() && $quote->isVirtual()) {
+            $shippingAddress->setShippingMethod(null);
             return;
         }
-
-        $shippingAddress = $quote->getShippingAddress();
 
         if (!$shippingAddress->getShippingMethod()) {
             if (!$shippingAddress->getCountryId()) {
