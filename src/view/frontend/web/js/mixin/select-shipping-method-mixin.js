@@ -42,8 +42,8 @@ define([
             var payload = {
                 addressInformation: {
                     'shipping_address': quote.shippingAddress(),
-                    'shipping_method_code': shippingMethod['method_code'],
-                    'shipping_carrier_code': shippingMethod['carrier_code']
+                    'shipping_method_code': shippingMethod ? shippingMethod['method_code'] : null,
+                    'shipping_carrier_code': shippingMethod ? shippingMethod['carrier_code'] : null
                 }
             };
 
